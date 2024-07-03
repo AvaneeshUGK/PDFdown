@@ -1,0 +1,1 @@
+{"version":3,"file":"DownloadButtonController.js","names":["sap","ui","define","MessageToast","downloadNow","oEvent","show"],"sources":["DownloadButtonController-dbg.js"],"mappings":"AAAAA,IAAIC,GAAGC,OAAO,CACV,sBACD,SAASC,GACR,aAEA,MAAO,CACHC,YAAa,SAASC,GAClB,SACAF,EAAaG,KAAK,0BACtB,EAER","ignoreList":[]}

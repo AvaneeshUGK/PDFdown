@@ -1,0 +1,58 @@
+{
+  "name": "InvoiceDownload",
+  "version": "1.0.0",
+  "description": "A simple CAP project.",
+  "repository": "<Add your repository here>",
+  "license": "UNLICENSED",
+  "private": true,
+  "dependencies": {
+    "@sap-cloud-sdk/connectivity": "^3.15.0",
+    "@sap-cloud-sdk/core": "^1.54.2",
+    "@sap-cloud-sdk/http-client": "^3.15.0",
+    "@sap/cds": "^7",
+    "@sap/cds-hana": "^2",
+    "@sap/xsenv": "^5.1.0",
+    "@sap/xssec": "^3",
+    "axios": "^1.7.2",
+    "express": "^4",
+    "file-saver": "^2.0.5",
+    "fs": "^0.0.1-security",
+    "pdf-lib": "^1.17.1"
+  },
+  "devDependencies": {
+    "@cap-js/sqlite": "^1",
+    "@sap/cds-dk": "^7",
+    "@sap/eslint-plugin-cds": "^3",
+    "@sap/ux-specification": "UI5-1.124",
+    "eslint": "^9",
+    "rimraf": "^5.0.5"
+  },
+  "scripts": {
+    "start": "cds-serve",
+    "watch-invoicedownload": "cds watch --open invoicedownload/webapp/index.html?sap-ui-xx-viewCache=false",
+    "undeploy": "cf undeploy InvoiceDownload --delete-services --delete-service-keys --delete-service-brokers",
+    "build": "rimraf resources mta_archives && mbt build --mtar archive",
+    "deploy": "cf deploy mta_archives/archive.mtar --retries 1"
+  },
+  "sapux": [
+    "app/invoicedownload"
+  ],
+  "cds": {
+    "requires": {
+      "connectivity": true,
+      "destinations": true,
+      "WIPRO_ODATA": {
+        "kind": "odata-v2",
+        "credentials": {
+          "destination": "TEST_DEST"
+        },
+        "destinationOptions": {
+          "selectionStrategy": "alwaysProvider",
+          "jwt": null
+        }
+      },
+      "db":"hana",
+      "auth": "dummy"
+    }
+  }
+}
